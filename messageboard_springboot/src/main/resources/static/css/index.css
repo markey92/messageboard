@@ -1,0 +1,132 @@
+body {
+	background-color: #FFFFCC;
+	font-family: Verdana, Geneva, Sans-serif;
+	font-size: medium;
+}
+header.top {
+	background-color: #999;
+	font-family: "Apple Chancery", Cursive;
+	font-size: large;
+	padding: 20px;
+	margin: 10px 0px;
+}
+footer.tail {
+	background-color: #999;
+	font-family: "Apple Chancery", Cursive;
+	font-size: large;
+	padding: 20px;
+	margin: 10px 0px;
+}
+section.message_board {
+	margin: 10px 20px;
+	position: relative;
+}
+input.input_text {
+	margin: 10px 3%;
+	width: 94%;
+	min-height: 40px;
+	border: solid 1px #9999CC;
+	border-radius: 8px;
+		/*制作阴影效果*/
+	-moz-box-shadow: 5px 5px 7px rgba(33,33,33,0.7);
+	-webkit-box-shadow: 5px 5px 7px rgba(33,33,33,0.7);
+	box-shadow: 5px 5px 7px rgba(33,33,33,0.7);
+}
+form {
+	text-align: right;
+}
+button.submit_button {
+	margin: 10px 3%;
+	width: 94%;
+	min-height: 40px;
+	border: solid 1px #663399;
+	background-color: #9999FF;
+	border-radius: 8px;
+		/*制作阴影效果*/
+	-moz-box-shadow: 5px 5px 7px rgba(33,33,33,0.7);
+	-webkit-box-shadow: 5px 5px 7px rgba(33,33,33,0.7);
+	box-shadow: 5px 5px 7px rgba(33,33,33,0.7);
+	font-size: medium;
+	font-family: "Apple Chancery", Cursive;
+	font-weight: 10px;
+}
+article.message:nth-child(3n) {
+	background-color: #99FF99;
+	/*制作旋转效果*/
+	-webkit-transform:rotate(-6deg);
+	-o-transform:rotate(-6deg);
+	-moz-transform:rotate(-6deg);
+	-ms-transform:rotate(-6deg);
+	transform:rotate(-6deg);
+	-moz-transition: -moz-transform .15s linear;
+	-webkit-transition: -webkit-transform .15s linear;
+	-o-transition: -o-transform .15s linear;
+	-ms-transition: -ms-transform .15s linear;
+	transition: transform .15s linear;
+	margin: 30px 20px;
+}
+article.message:nth-child(3n+1) {
+	background-color: #FFCCCC;
+	/*制作旋转效果*/
+	-webkit-transform:rotate(3deg);
+	-o-transform:rotate(3deg);
+	-moz-transform:rotate(3deg);
+	-ms-transform:rotate(3deg);
+	transform:rotate(3deg);
+	-moz-transition: -moz-transform .15s linear;
+	-webkit-transition: -webkit-transform .15s linear;
+	-o-transition: -o-transform .15s linear;
+	-ms-transition: -ms-transform .15s linear;
+	transition: transform .15s linear;
+	margin: 30px 20px;
+}
+article.message:nth-child(3n+2) {
+	background-color: #9999CC;
+	/*制作旋转效果*/
+	-webkit-transform:rotate(2deg);
+	-o-transform:rotate(2deg);
+	-moz-transform:rotate(2deg);
+	-ms-transform:rotate(2deg);
+	transform:rotate(2deg);
+	-moz-transition: -moz-transform .15s linear;
+	-webkit-transition: -webkit-transform .15s linear;
+	-o-transition: -o-transform .15s linear;
+	-ms-transition: -ms-transform .15s linear;
+	transition: transform .15s linear;
+	margin: 30px 20px;
+}
+article.message {
+	position: relative;
+	display: inline-block;
+	width: 350px;
+	min-height: 300px;
+	padding:5px;
+	/*制作阴影效果*/
+	-moz-box-shadow: 5px 5px 7px rgba(33,33,33,0.7);
+	-webkit-box-shadow: 5px 5px 7px rgba(33,33,33,0.7);
+	box-shadow: 5px 5px 7px rgba(33,33,33,0.7);
+
+}
+div.label:before {
+	content: '';
+	position: absolute;
+	top: -20px;
+	left: 20%;
+	width: 110px;
+	height: 40px;
+	background-color: rgba(255,255,204,0.6);
+	border-left: 1px dashed rgba(0,0,0.1);
+	border-right: 1px dashed rgba(0,0,0.1);
+}
+article.message header {
+	font-style: italic;
+	font-family: "Apple Chancery", Cursive;
+	font-size: small;
+	margin-top: 20px;
+}
+article.message footer{
+	font-style: italic;
+	font-family: "Apple Chancery", Cursive;
+	font-size: small;
+	margin: 10px 0px;
+}

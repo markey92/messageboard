@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>MessageBoard Of Markey</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<link rel="stylesheet" type="text/css" href="../css/index.css">
+	<script src="http://code.jquery.com/jquery-1.4.3.js"></script>  
+	<script type="text/javascript">
+	var api_ip = "";
+	$.getJSON("/config.json", function(data) {
+		api_ip = data["api_ip"];
+		refresh_messages();
+	})
+	
+	function refresh_messages(){
+		$.ajax({  
+			type: "GET",//请求方式  
+			url: "http://"+api_ip+"/api/v1/messages",
+			dataType: "json",
+			success: function(data, textStatus){
+				var section = document.getElementsByClassName("message_board")[0]
+				data.reverse()
+
+				$.each(data, function(index, val) {
+					/* iterate through array or object */
+					console.log(val);
+					var message = document.createElement("article");
+					section.appendChild(message);
+					message.setAttribute("class", "message");
+					var label = document.createElement("div");
+					label.setAttribute("class", 'label');
+					message.appendChild(label);
+					var header = document.createElement("header");
+					message.appendChild(header);
+					var time = document.createElement("time");
+					var createTime = new Date(val.createTime);
+					header.appendChild(time);
+					time.innerHTML = createTime.toLocaleString();
+					var p = document.createElement("p");
+					message.appendChild(p);
+					p.innerHTML = val.body;
+					// var footer = document.createElement("footer");
+					// message.appendChild(footer);
+					// footer.innerHTML = "from" + val.createLocation.province + " " + val.createLocation.city + " " + val.createLocation.district;
+					;
+				});
+		    }  
+		}); 		
+	}
+
+	function choose_message(){
+		bean = {'province':'广东','city':'广州','district':'番禺'}
+		$.ajax({
+			url: 'http://localhost:8080/app/Messages/messages',
+			contentType: "application/json",
+			type: 'POST',
+			data:JSON.stringify({'province':'广东','city':'广州',district:'番禺'}),
+			dataType:"json",
+			success: function(data, textStatus){
+				var section = document.getElementsByClassName("message_board")[0]
+				while(section.hasChildNodes()) //当div下还存在子节点时 循环继续
+				{
+				    section.removeChild(section.firstChild);
+				}
+				$.makeArray(data.data).reverse()
+				$.each(data.data, function(index, val) {
+					/* iterate through array or object */
+					console.log(val);
+					var message = document.createElement("article");
+					section.appendChild(message);
+					message.setAttribute("class", "message");
+					var label = document.createElement("div");
+					label.setAttribute("class", 'label');
+					message.appendChild(label);
+					var header = document.createElement("header");
+					message.appendChild(header);
+					var time = document.createElement("time");
+					var createTime = new Date(val.createTime);
+					header.appendChild(time);
+					time.innerHTML = createTime.toLocaleString();
+					var p = document.createElement("p");
+					message.appendChild(p);
+					p.innerHTML = val.body;
+					// var footer = document.createElement("footer");
+					// message.appendChild(footer);
+					// footer.innerHTML = "from" + val.createLocation.province + " " + val.createLocation.city + " " + val.createLocation.district;
+					;
+				});
+		    }  
+		});
+	}
+	function submit_message(){
+		data = {
+    "body":document.getElementById("submit_body").value,
+    "createLocation":{
+        "province":"广东",
+        "city":"深圳",
+        "district":"龙岗"
+    }
+}
+		$.ajax({
+			url: 'http://localhost:8080/app/Messages/createmessages',
+			contentType: "application/json",
+			type: 'POST',
+			data:JSON.stringify(data),
+			dataType:"json",
+			success: function(data, textStatus){
+				var section = document.getElementsByClassName("message_board")[0]
+				while(section.hasChildNodes()) //当div下还存在子节点时 循环继续
+				{
+				    section.removeChild(section.firstChild);
+				}
+				refresh_messages();
+		    }  
+		});
+	}
+
+	</script>
+</head>
+<body>
+<header class="top">Welcome to MessageBoard of Markey</header>
+<form id="form">
+	<input class="input_text" name="text" type="text" id="submit_body"></input>
+	<button class="submit_button" type="button" onclick="submit_message()">发表</button>
+</form>
+<section class="message_board" id="message_board">
+</section>
+<footer class="tail">
+	Nice to meet you!
+</footer>
+</body>
+</html>
