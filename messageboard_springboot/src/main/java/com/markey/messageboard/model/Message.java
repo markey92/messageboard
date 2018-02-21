@@ -1,6 +1,8 @@
 package com.markey.messageboard.model;
 
 import java.sql.Timestamp;
+import java.util.Date;
+
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -11,8 +13,36 @@ public class Message {
 	@Id
 	private String id;
 	private String body;
-	private Timestamp createTime;
+	
+	private Date createTime;
 	LngLat position = new LngLat();
+	private String province;
+	private String city;
+	private String district;
+	
+	public String getProvince() {
+		return province;
+	}
+
+	public void setProvince(String province) {
+		this.province = province;
+	}
+
+	public String getCity() {
+		return city;
+	}
+
+	public void setCity(String city) {
+		this.city = city;
+	}
+
+	public String getDistrict() {
+		return district;
+	}
+
+	public void setDistrict(String district) {
+		this.district = district;
+	}
 
 	public String getBody() {
 		return body;
@@ -22,11 +52,11 @@ public class Message {
 		this.body = body;
 	}
 
-	public Timestamp getCreateTime() {
+	public Date getCreateTime() {
 		return createTime;
 	}
 
-	public void setCreateTime(Timestamp createTime) {
+	public void setCreateTime(Date createTime) {
 		this.createTime = createTime;
 	}
 

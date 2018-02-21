@@ -1,5 +1,6 @@
 package com.markey.messageboard.service.impl;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +19,7 @@ public class MessageServiceImpl implements MessageService{
 	@Override
 	public Message save(Message message) {
 		// TODO Auto-generated method stub
+		message.setCreateTime(new Date());
 		return messageRepository.save(message);
 	}
 
